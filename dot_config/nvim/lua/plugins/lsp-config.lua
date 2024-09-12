@@ -26,7 +26,7 @@ return {
       })
       lspconfig.ruby_lsp.setup({
         capabilities = capabilities,
-        cmd = {"/home/chris/.asdf/shims/ruby-lsp"}
+        cmd = {"/usr/local/bundle/bin/ruby-lsp"}
       })
     end,
 
