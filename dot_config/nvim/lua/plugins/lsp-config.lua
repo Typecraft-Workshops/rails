@@ -9,7 +9,7 @@ return {
     "williamboman/mason-lspconfig",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "ruby_lsp" },
+        ensure_installed = { "lua_ls"},
         automatic_installation = true,
       })
     end
@@ -25,13 +25,19 @@ return {
         capabilities = capabilities
       })
       lspconfig.ruby_lsp.setup({
+        init_options = {
+          formatter = 'standard',
+          linters = { 'standard' },
+        },
         capabilities = capabilities,
-        cmd = {"/usr/local/bundle/bin/ruby-lsp"}
+        cmd = { vim.fn.expand "~/.asdf/shims/ruby-lsp"},
       })
     end,
 
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = "hover documentation LSP" }),
     vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = "Code Action LSP" }),
     vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, { desc = "GOTO Definition LSP" }),
+    vim.keymap.set('n', '<leader>gr', vim.lsp.buf.references, { desc = "GOTO References LSP" }),
+    vim.keymap.set('n', '<leader>gf', vim.lsp.buf.format, { desc = "Format File LSP" }),
   }
 }
