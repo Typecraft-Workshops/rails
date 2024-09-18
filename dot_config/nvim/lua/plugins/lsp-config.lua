@@ -30,7 +30,7 @@ return {
           linters = { 'standard' },
         },
         capabilities = capabilities,
-        cmd = { vim.fn.expand "~/.asdf/shims/ruby-lsp"},
+        cmd = { vim.fn.expand "/usr/local/bundle/bin/ruby-lsp"},
       })
     end,
 
